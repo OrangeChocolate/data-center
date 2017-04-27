@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-register',
@@ -66,7 +67,7 @@ export class RegisterPage {
     this.auth.register(this.registerCredentials).subscribe(success => {
         if (success) {
           this.createSuccess = true;
-          this.showPopup("Success", "Account created.");
+          this.nav.setRoot(HomePage);
         } else {
           this.showPopup("Error", "Problem creating account.");
         }

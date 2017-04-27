@@ -14,6 +14,8 @@ import {SchoolRoll} from "../pages/school-roll/school-roll";
 import {Help} from "../pages/help/help";
 import {SchoolRollService} from "../providers/school-roll-service";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {InfoSearch} from "../pages/info-search/info-search";
+import {InfoDetail} from "../pages/info-detail/info-detail";
 
 @NgModule({
   declarations: [
@@ -22,13 +24,16 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     RegisterPage,
     LoginPage,
     SchoolRoll,
-    Help
+    Help,
+    InfoSearch,
+    InfoDetail,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     NoopAnimationsModule,
-    IonicModule.forRoot(MyApp)
+    BrowserAnimationsModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,6 +43,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     LoginPage,
     SchoolRoll,
     Help,
+    InfoSearch,
+    InfoDetail,
   ],
   providers: [
     StatusBar,

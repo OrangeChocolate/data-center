@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {InfoSearch} from "../info-search/info-search";
 
 /**
  * Generated class for the SchoolRoll page.
@@ -13,7 +14,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SchoolRoll {
 
+  items: Array<{ operationName: string, title: string, component: any, data: any }>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.items = [
+      { operationName: "loadSchoolRollsLimited", title: "获取学生信息", component: InfoSearch, data: {id: "loadSchoolRollsLimited"} },
+      { operationName: "loadPersonsOfStartYearAndSubject", title: "获取指定专业人数", component: InfoSearch, data: {id: "loadPersonsOfStartYearAndSubject"} },
+    ]
+  }
+
+  itemSelected(item) {
+    this.navCtrl.push(item.component, {
+      item: item,
+    });
   }
 
   ionViewDidLoad() {

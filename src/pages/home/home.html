@@ -6,14 +6,20 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Home</ion-title>
+
     </ion-navbar>
   </ion-header>
 
   <ion-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button full item-right (click)="logout()" >退出</button>
+      </ion-col>
+    </ion-row>
     <ion-list>
       <ion-list-header>
         <ion-card>
-          <img class="profile_image" src="../../assets/images/joshuamorony.png"/>
+          <img class="profile_image" src="assets/images/joshuamorony.png"/>
         </ion-card>
       </ion-list-header>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">

@@ -1,0 +1,83 @@
+<!--
+  Generated template for the InfoSearch page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>信息查询</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div [ngSwitch]="operationName">
+
+    <template [ngSwitchCase]="'loadSchoolRollsLimited'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4><ion-label>设置显示行数</ion-label></ion-col>
+          <ion-col col-4>
+            <ion-select [(ngModel)]="limitedCount">
+              <ion-option value=10 selected="true">10</ion-option>
+              <ion-option value=50>50</ion-option>
+              <ion-option value=100>100</ion-option>
+              <ion-option value=100>300</ion-option>
+              <ion-option value=100>500</ion-option>
+              <ion-option value=100>1000</ion-option>
+            </ion-select>
+          </ion-col>
+          <ion-col col-4><button ion-button block color="secondary" (click)="loadSchoolRollsLimited(limitedCount)">查询</button></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-list>
+        <button ion-button class="action-button" block *ngFor="let item of listData" (click)="itemSelected(item, 'loadSchoolRollsLimited')">
+          {{ item.name }}
+        </button>
+      </ion-list>
+    </template>
+
+    <template [ngSwitchCase]="'loadPersonsOfStartYearAndSubject'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12><ion-title align-title="center">设置参数</ion-title></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><ion-label>设置数据源</ion-label></ion-col>
+          <ion-col col-8><ion-input type="text" [(ngModel)]="personsOfStartYearAndSubjectData.ds" required></ion-input></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><ion-label>设置年份</ion-label></ion-col>
+          <ion-col col-8><ion-datetime displayFormat="YYYY" [(ngModel)]="personsOfStartYearAndSubjectData.year">{{personsOfStartYearAndSubjectData.year}}</ion-datetime></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4><ion-label>设置显示行数</ion-label></ion-col>
+          <ion-col col-8>
+            <ion-select [(ngModel)]="personsOfStartYearAndSubjectData.rows">
+              <ion-option value=10 selected="true">10</ion-option>
+              <ion-option value=50>50</ion-option>
+              <ion-option value=100>100</ion-option>
+              <ion-option value=100>300</ion-option>
+              <ion-option value=100>500</ion-option>
+              <ion-option value=100>1000</ion-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12><button ion-button block color="secondary" (click)="loadPersonsOfStartYearAndSubject(personsOfStartYearAndSubjectData.ds, personsOfStartYearAndSubjectData.year, personsOfStartYearAndSubjectData.rows)">查询</button></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-list>
+        <button ion-button class="action-button" block *ngFor="let item of listData" (click)="itemSelected(item, 'loadPersonsOfStartYearAndSubject')">
+          {{ item.subject }}
+        </button>
+      </ion-list>
+    </template>
+
+  </div>
+
+</ion-content>

@@ -10,11 +10,16 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>School Roll</ion-title>
+    <ion-title>学籍信息查询</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-This is sample school roll page
+<ion-content>
+  <ion-list>
+    <ion-list-header>学籍</ion-list-header>
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item.title }}
+    </button>
+  </ion-list>
 </ion-content>

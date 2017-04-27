@@ -21,7 +21,7 @@ export class HomePage {
   username = '';
   email = '';
 
-  constructor(private navController: NavController, private auth: AuthService,
+  constructor(private navCtrl: NavController, private auth: AuthService,
               public platform: Platform,
               public menu: MenuController,
               public statusBar: StatusBar,
@@ -37,6 +37,7 @@ export class HomePage {
   }
 
   public logout() {
+    this.menu.close();
     this.auth.logout().subscribe(succ => {
       this.nav.setRoot(LoginPage)
     });

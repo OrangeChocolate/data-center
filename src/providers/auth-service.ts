@@ -5,12 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout'
 
 export class User {
-  name: string;
-  email: string;
-
   constructor(name: string, email: string) {
-    this.name = name;
-    this.email = email;
   }
 }
 
@@ -35,9 +30,9 @@ export class AuthService {
         // let access = (credentials.password === "pass" && credentials.email === "email");
         let urlParam = new URLSearchParams();
         urlParam.append('username', credentials.username);
-        urlParam.append('password', credentials.password);
+        urlParam.append('psd', credentials.password);
         let urlParamString = urlParam.toString();
-        this.http.post(this.baseUrl + this.loginPath, urlParamString)
+        this.http.post(this.baseUrl + this.loginPath + "?" + urlParamString, null)
           .timeout(3000)
           .map(res => res.json())
           .subscribe(
@@ -53,8 +48,7 @@ export class AuthService {
               }
             },
             err => {
-              this.currentUser = new User('ldh', 'saimon@devdactic.com');
-              observer.next(true);
+              observer.next(false);
               observer.complete();
               console.error(err);
             },
@@ -71,10 +65,11 @@ export class AuthService {
     } else {
       // At this point store the credentials to your backend!
       return Observable.create(observer => {
-        this.http.put(this.baseUrl + this.registerPath, {
-          username: credentials.username,
-          password: credentials.password
-        })
+        let urlParam = new URLSearchParams();
+        urlParam.append('username', credentials.username);
+        urlParam.append('psd', credentials.password);
+        let urlParamString = urlParam.toString();
+        this.http.put(this.baseUrl + this.registerPath + "?" + urlParamString, null)
           .map(res => res.json())
           .subscribe(
             res => {
@@ -83,10 +78,12 @@ export class AuthService {
               observer.complete();
             },
             err => {
+              observer.next(false);
+              observer.complete();
               console.error(err);
             },
             () => {
-
+              console.log('done');
             });
       });
     }
