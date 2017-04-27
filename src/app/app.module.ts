@@ -12,6 +12,8 @@ import { HttpModule } from '@angular/http';
 import {AuthService} from "../providers/auth-service";
 import {SchoolRoll} from "../pages/school-roll/school-roll";
 import {Help} from "../pages/help/help";
+import {SchoolRollService} from "../providers/school-roll-service";
+import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {Help} from "../pages/help/help";
   imports: [
     BrowserModule,
     HttpModule,
+    NoopAnimationsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -40,6 +43,7 @@ import {Help} from "../pages/help/help";
     StatusBar,
     SplashScreen,
     AuthService,
+    SchoolRollService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

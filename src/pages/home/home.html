@@ -11,6 +11,11 @@
 
   <ion-content>
     <ion-list>
+      <ion-list-header>
+        <ion-card>
+          <img class="profile_image" src="../../assets/images/joshuamorony.png"/>
+        </ion-card>
+      </ion-list-header>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>

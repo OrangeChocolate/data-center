@@ -1,17 +1,25 @@
-page-login {
+.ios, .md {
 
-  .login-content {
-    background: #56CA96;
+  page-login {
 
-    .logo-row {
-      padding-top: 50px;
-      padding-bottom: 20px;
+    .scroll-content {
+      background-color: #42c7ff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
-    .login-box {
-      background: #399F8B;
-      padding: 20px 20px 0px 20px;
-      margin-top: 30px;
+    img {
+      width: 50%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    #cloud-layer {
+      background-image: url(../assets/images/cloud-layer.png);
+      background-size: cover;
+      width: 100%;
+      height: 100%;
     }
 
     ion-row {
@@ -21,34 +29,25 @@ page-login {
 
     ion-item {
       border-radius: 30px !important;
-      padding-left: 30px !important;
-      font-size: 0.9em;
+      padding-left: 10px !important;
       margin-bottom: 10px;
-      border: 1px solid #ffffff;
-      border-bottom: 0px !important;
-      box-shadow: none !important;
+      background-color: #f6f6f6;
+      opacity: 0.7;
+      font-size: 0.9em;
     }
 
-    .signup-col {
-      margin: 0px 16px 0px 16px;
-      padding-bottom: 20px;
+    ion-list {
+      margin: 0;
     }
 
-    .item-inner {
-      border-bottom-color: #ffffff !important;
-      box-shadow: none !important;
+    .login-button, .register-button {
+      width: 100%;
+      border-radius: 30px;
+      font-size: 0.9em;
+      border: 1px solid #fff;
+      background-color: #39acdc;
     }
 
-    .submit-btn {
-      background: #51CFB1;
-      border-radius: 30px !important;
-      border: 1px solid #ffffff;
-    }
-
-    .register-btn {
-      color: #ffffff;
-      font-size: 0.8em;
-    }
   }
 
 }
