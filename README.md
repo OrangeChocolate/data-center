@@ -2,7 +2,7 @@
 
 This is sample app for data-center management.
 
-### Prerequisite
+### Prerequisites
 
 1. latest node and npm
 2. install cordova and ionic with `npm install -g cordova ionic`
@@ -19,6 +19,22 @@ This is sample app for data-center management.
 - Build android or ios client using `ionic build [android|ios|web]`
 - Test your apps on multiple screen sizes and platform types using `ionic serve --lab`
 - Upload your app to cloud and build remotely using `ionic upload`, then go to [My Apps][My Apps] to manage.
+
+### Help links
+
+1. [getting-started][getting-started]
+2. [components][components]
+3. [ionicons][ionicons]
+4. [cli][cli]
+5. [Create an Animated Login Screen in Ionic 2][Create an Animated Login Screen in Ionic 2]
+6. [Adding Responsive Charts & Graphs to Ionic 2][Adding Responsive Charts & Graphs to Ionic 2]
+7. [Simple Ionic Login with Angular 2+][Simple Ionic Login with Angular 2+]
+8. [Upgrade to Ionic 3 Lazy Loading (With Script!)][Upgrade to Ionic 3 Lazy Loading (With Script!)]
+9. [Angular 2 User Registration and Login Example & Tutorial][Angular 2 User Registration and Login Example & Tutorial]
+10. [How To Animate Your Ionic App With Animate.css And ngAnimate][How To Animate Your Ionic App With Animate.css And ngAnimate]
+11. [10 Minutes with Ionic 2: Calling an API][10 Minutes with Ionic 2: Calling an API]
+
+### Extra
 
 Full ionic cli documentation is below
 
@@ -271,20 +287,6 @@ state <COMMAND> ...............................  Saves or restores state of your
 docs <TOPIC> ..................................  Opens up the documentation for Ionic
                                                  <TOPIC> the topic to view help documentation for. Use "ls" to view all topics
 ```
-
-### Help links
-
-1. [getting-started][getting-started]
-2. [components][components]
-3. [ionicons][ionicons]
-4. [10 Minutes with Ionic 2: Calling an API][10 Minutes with Ionic 2: Calling an API]
-5. [Create an Animated Login Screen in Ionic 2][Create an Animated Login Screen in Ionic 2]
-6. [Adding Responsive Charts & Graphs to Ionic 2][Adding Responsive Charts & Graphs to Ionic 2]
-7. [Simple Ionic Login with Angular 2+][Simple Ionic Login with Angular 2+]
-8. [Upgrade to Ionic 3 Lazy Loading (With Script!)][Upgrade to Ionic 3 Lazy Loading (With Script!)]
-9. [Angular 2 User Registration and Login Example & Tutorial][Angular 2 User Registration and Login Example & Tutorial]
-10. [How To Animate Your Ionic App With Animate.css And ngAnimate][How To Animate Your Ionic App With Animate.css And ngAnimate]
-11. [cli][cli]
 
 
 [getting-started]: http://ionicframework.com/getting-started/
