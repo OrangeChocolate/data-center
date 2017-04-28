@@ -15,51 +15,11 @@
 
 <ion-content padding>
 
-  <div [ngSwitch]="operationName">
-    <template [ngSwitchCase]="'loadSchoolRollsLimited'">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-4><ion-label>ID</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.id}}</ion-title></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-4><ion-label>学号</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.studentid}}</ion-title></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-4><ion-label>姓名</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.name}}</ion-title></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-4><ion-label>性别</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.sex}}</ion-title></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-4><ion-label>国籍</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.nation}}</ion-title></ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-4><ion-label>政治面貌</ion-label></ion-col>
-          <ion-col col-8><ion-title>{{item.politicalstatus}}</ion-title></ion-col>
-        </ion-row>
-      </ion-grid>
-    </template>
-    <template [ngSwitchCase]="'loadPersonsOfStartYearAndSubject'">
-      <ion-grid>
-      <ion-row>
-        <ion-col col-4><ion-label>入学年份</ion-label></ion-col>
-        <ion-col col-8><ion-title>{{item.subject}}</ion-title></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-4><ion-label>专业</ion-label></ion-col>
-        <ion-col col-8><ion-title>{{item.subject}}</ion-title></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-4><ion-label>人数</ion-label></ion-col>
-        <ion-col col-8><ion-title>{{item.numberOfPersons}}</ion-title></ion-col>
-      </ion-row>
-      </ion-grid>
-    </template>
-  </div>
+  <ion-grid>
+    <ion-row *ngFor="let keyValuePairProperty of item.getDisplayProperties()">
+      <ion-col col-4><ion-title>{{keyValuePairProperty.key}}</ion-title></ion-col>
+      <ion-col col-8><ion-title>{{keyValuePairProperty.value}}</ion-title></ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

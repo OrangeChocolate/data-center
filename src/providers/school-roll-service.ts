@@ -3,40 +3,7 @@ import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout'
-
-export class Tempusers {
-  constructor(id: number, username: string, psd: string, logincount: number, lastlogin: string, servicescode: string) {
-  }
-}
-
-export class Schoolrolls {
-  constructor(id: string,
-              studentid: string,
-              name: string,
-              sex: string,
-              nation: string,
-              politicalstatus: string,
-              nativeplace: string,
-              education: string,
-              maritalstatus: string,
-              personid: string,
-              learncenterid: string,
-              department: string,
-              subject: string,
-              classname: string,
-              trainschemid: string,
-              startyear: string,
-              startterm: string,
-              schoolrollsstatus: string,
-              contact: string,
-              postaladdress: string,
-              postalcode: string,
-              verifystatus: string,
-              verifyfaieldreason56: string,
-              birthday: string,
-              ds: string) {
-  }
-}
+import {PersonsOfStartYearAndSubject, Schoolrolls, Tempusers} from "../utils/model";
 
 @Injectable()
 export class SchoolRollService {
@@ -47,8 +14,8 @@ export class SchoolRollService {
   schoolRollPersonsOfSubjectPath = "/schoolrools/subject/persons";
   schoolRollSchoolrollsPath = "/schoolrools/studentid";
 
-  schoolRollLimitedData : Array<Tempusers>;
-  schoolRollPersonsOfStartYearAndSubject: Array<any>;
+  schoolRollLimitedData : Schoolrolls[];
+  schoolRollPersonsOfStartYearAndSubject: PersonsOfStartYearAndSubject[];
 
   constructor(public http: Http) {
     console.log('Hello SchoolRollService Provider');
@@ -73,7 +40,9 @@ export class SchoolRollService {
         .map(res => res.json())
         .subscribe(
           res => {
-              this.schoolRollLimitedData = res;
+              this.schoolRollLimitedData = res.map(jsObject => {
+                return Schoolrolls.initFromJsObject(jsObject);
+              });
               observer.next(true);
               observer.complete();
           },
@@ -100,7 +69,9 @@ export class SchoolRollService {
         .map(res => res.json())
         .subscribe(
           res => {
-            this.schoolRollPersonsOfStartYearAndSubject = res;
+            this.schoolRollPersonsOfStartYearAndSubject = res.map(jsObject => {
+              return PersonsOfStartYearAndSubject.initFromJsObject(jsObject);
+            });
             observer.next(true);
             observer.complete();
           },

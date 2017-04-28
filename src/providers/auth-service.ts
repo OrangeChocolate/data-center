@@ -3,11 +3,8 @@ import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout'
+import {User} from "../utils/model";
 
-export class User {
-  constructor(name: string, email: string) {
-  }
-}
 
 @Injectable()
 export class AuthService {
@@ -38,7 +35,7 @@ export class AuthService {
           .subscribe(
             res => {
               if (res.login) {
-                this.currentUser = new User(res.username, 'saimon@devdactic.com');
+                this.currentUser = User.initFromJsObject(res);
                 observer.next(true);
                 observer.complete();
               }
@@ -73,7 +70,7 @@ export class AuthService {
           .map(res => res.json())
           .subscribe(
             res => {
-              this.currentUser = new User(res.username, 'saimon@devdactic.com');
+              this.currentUser = User.initFromJsObject(res);
               observer.next(true);
               observer.complete();
             },

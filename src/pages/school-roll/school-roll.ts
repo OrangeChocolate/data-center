@@ -14,12 +14,12 @@ import {InfoSearch} from "../info-search/info-search";
 })
 export class SchoolRoll {
 
-  items: Array<{ operationName: string, title: string, component: any, data: any }>;
+  items: Array<{ operationName: string, title: string, component: any}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [
-      { operationName: "loadSchoolRollsLimited", title: "获取学生信息", component: InfoSearch, data: {id: "loadSchoolRollsLimited"} },
-      { operationName: "loadPersonsOfStartYearAndSubject", title: "获取指定专业人数", component: InfoSearch, data: {id: "loadPersonsOfStartYearAndSubject"} },
+      { operationName: "loadSchoolRollsLimited", title: "获取学生信息", component: InfoSearch},
+      { operationName: "loadPersonsOfStartYearAndSubject", title: "获取指定专业人数", component: InfoSearch},
     ]
   }
 
