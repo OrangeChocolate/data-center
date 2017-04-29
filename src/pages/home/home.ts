@@ -31,8 +31,8 @@ export class HomePage {
     this.email = info['email'];
     this.initialization();
     this.pages = [
-      {title: "SchoolRoll", component: SchoolRoll},
-      {title: "Help", component: Help},
+      {title: "学籍信息查询", component: SchoolRoll},
+      {title: "帮助", component: Help},
     ]
   }
 

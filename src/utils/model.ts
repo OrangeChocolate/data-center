@@ -133,6 +133,35 @@ export class Schoolrolls extends BaseModel {
 }
 Schoolrolls.initDisplayProperties();
 
+
+export class SchoolroolsCount extends BaseModel {
+  static propertyNames: KeyValuePair[] = [];
+
+  constructor(public total: string) {
+    super()
+  }
+
+  static initDisplayProperties() {
+    SchoolroolsCount.propertyNames.push({key: "total", value: "总人数"});
+  }
+
+  static initFromJsObject(jsObject: any): PersonsOfStartYearAndSubject {
+    let instance = new PersonsOfStartYearAndSubject(jsObject.startYear, jsObject.subject, jsObject.numberOfPersons);
+    return instance;
+  }
+
+  getDisplayProperties(): KeyValuePair[] {
+    this.propertyNamedValues = [];
+    for (let propertyName of SchoolroolsCount.propertyNames) {
+      this.propertyNamedValues.push({key: propertyName.value, value: this[propertyName.key]});
+    }
+    return this.propertyNamedValues;
+  }
+
+}
+SchoolroolsCount.initDisplayProperties();
+
+
 export class PersonsOfStartYearAndSubject extends BaseModel {
   static propertyNames: KeyValuePair[] = [];
 
@@ -161,3 +190,32 @@ export class PersonsOfStartYearAndSubject extends BaseModel {
 
 }
 PersonsOfStartYearAndSubject.initDisplayProperties();
+
+
+export class PersonsOfSubject extends BaseModel {
+  static propertyNames: KeyValuePair[] = [];
+
+  constructor(public subject: string, public numberOfPersons: string) {
+    super()
+  }
+
+  static initDisplayProperties() {
+    PersonsOfSubject.propertyNames.push({key: "subject", value: "专业"});
+    PersonsOfSubject.propertyNames.push({key: "numberOfPersons", value: "人数"});
+  }
+
+  static initFromJsObject(jsObject: any): PersonsOfStartYearAndSubject {
+    let instance = new PersonsOfStartYearAndSubject(jsObject.startYear, jsObject.subject, jsObject.numberOfPersons);
+    return instance;
+  }
+
+  getDisplayProperties(): KeyValuePair[] {
+    this.propertyNamedValues = [];
+    for (let propertyName of PersonsOfSubject.propertyNames) {
+      this.propertyNamedValues.push({key: propertyName.value, value: this[propertyName.key]});
+    }
+    return this.propertyNamedValues;
+  }
+
+}
+PersonsOfSubject.initDisplayProperties();

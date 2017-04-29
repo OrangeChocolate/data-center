@@ -3,7 +3,7 @@ import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout'
-import {PersonsOfStartYearAndSubject, Schoolrolls, Tempusers} from "../utils/model";
+import {PersonsOfStartYearAndSubject, PersonsOfSubject, Schoolrolls, Tempusers} from "../utils/model";
 
 @Injectable()
 export class SchoolRollService {
@@ -12,10 +12,14 @@ export class SchoolRollService {
   schoolRollListPath = "/schoolrools/list";
   schoolRollPersonsOfStartYearAndSubjectPath = "/schoolrools/startyear/subject/persons/";
   schoolRollPersonsOfSubjectPath = "/schoolrools/subject/persons";
-  schoolRollSchoolrollsPath = "/schoolrools/studentid";
+  schoolRollSchoolrollsByStudentIdPath = "/schoolrools/studentid";
+  schoolRollSchoolrollsByNamePath = "/schoolrools/name";
 
   schoolRollLimitedData : Schoolrolls[];
   schoolRollPersonsOfStartYearAndSubject: PersonsOfStartYearAndSubject[];
+  schoolRollPersonsOfSubject: PersonsOfSubject[];
+  schoolRollByStudentId : Schoolrolls[];
+  schoolRollByName : Schoolrolls[];
 
   constructor(public http: Http) {
     console.log('Hello SchoolRollService Provider');
@@ -31,10 +35,8 @@ export class SchoolRollService {
   }
 
 
-  loadSchoolRollsLimited(count: Number) {
+  loadSchoolRollsLimited(count: number) {
     return Observable.create(observer => {
-      // At this point make a request to your backend to make a real check!
-      // let access = (credentials.password === "pass" && credentials.email === "email");
       this.http.get(this.baseUrl + this.schoolRollListPath + "/" + count)
         .timeout(3000)
         .map(res => res.json())
@@ -60,10 +62,8 @@ export class SchoolRollService {
 
 
 
-  loadPersonsOfStartYearAndSubject(ds: Number, year: Number, rows: Number) {
+  loadPersonsOfStartYearAndSubject(ds: number, year: number, rows: number) {
     return Observable.create(observer => {
-      // At this point make a request to your backend to make a real check!
-      // let access = (credentials.password === "pass" && credentials.email === "email");
       this.http.get(this.baseUrl + this.schoolRollPersonsOfStartYearAndSubjectPath + "/" + ds + "/" + year + "/" + rows)
         .timeout(3000)
         .map(res => res.json())
@@ -77,6 +77,87 @@ export class SchoolRollService {
           },
           err => {
             this.schoolRollPersonsOfStartYearAndSubject = null;
+            observer.next(false);
+            observer.complete();
+            console.error(err);
+          },
+          () => {
+            console.log('done');
+          });
+    });
+  }
+
+
+
+  loadPersonsOfSubject(ds: string, rows: number) {
+    return Observable.create(observer => {
+      this.http.get(this.baseUrl + this.schoolRollPersonsOfSubjectPath + "/" + ds + "/" + rows)
+        .timeout(3000)
+        .map(res => res.json())
+        .subscribe(
+          res => {
+            this.schoolRollPersonsOfSubject = res.map(jsObject => {
+              return PersonsOfSubject.initFromJsObject(jsObject);
+            });
+            observer.next(true);
+            observer.complete();
+          },
+          err => {
+            this.schoolRollPersonsOfSubject = null;
+            observer.next(false);
+            observer.complete();
+            console.error(err);
+          },
+          () => {
+            console.log('done');
+          });
+    });
+  }
+
+
+
+  loadSchoolRollsByStudentId(studentId: string) {
+    return Observable.create(observer => {
+      this.http.get(this.baseUrl + this.schoolRollSchoolrollsByStudentIdPath + "/" + studentId)
+        .timeout(3000)
+        .map(res => res.json())
+        .subscribe(
+          res => {
+            this.schoolRollByStudentId = res.map(jsObject => {
+              return Schoolrolls.initFromJsObject(jsObject);
+            });
+            observer.next(true);
+            observer.complete();
+          },
+          err => {
+            this.schoolRollByStudentId = null;
+            observer.next(false);
+            observer.complete();
+            console.error(err);
+          },
+          () => {
+            console.log('done');
+          });
+    });
+  }
+
+
+
+  loadSchoolRollsByName(name: string) {
+    return Observable.create(observer => {
+      this.http.get(this.baseUrl + this.schoolRollSchoolrollsByNamePath + "/" + name)
+        .timeout(3000)
+        .map(res => res.json())
+        .subscribe(
+          res => {
+            this.schoolRollByName = res.map(jsObject => {
+              return Schoolrolls.initFromJsObject(jsObject);
+            });
+            observer.next(true);
+            observer.complete();
+          },
+          err => {
+            this.schoolRollByName = null;
             observer.next(false);
             observer.complete();
             console.error(err);
