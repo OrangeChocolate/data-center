@@ -6,6 +6,7 @@ import {SchoolRoll} from "../school-roll/school-roll";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {Help} from "../help/help";
+import {Statistics} from "../statistics/statistics";
 
 @Component({
   selector: 'page-home',
@@ -32,6 +33,7 @@ export class HomePage {
     this.initialization();
     this.pages = [
       {title: "学籍信息查询", component: SchoolRoll},
+      {title: "统计", component: Statistics},
       {title: "帮助", component: Help},
     ]
   }

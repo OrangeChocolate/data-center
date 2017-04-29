@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout'
-import {PersonsOfStartYearAndSubject, PersonsOfSubject, Schoolrolls, Tempusers} from "../utils/model";
+import {PersonsOfStartYearAndSubject, PersonsOfSubject, Schoolrolls} from "../utils/model";
 
 @Injectable()
 export class SchoolRollService {

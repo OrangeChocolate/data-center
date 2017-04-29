@@ -16,6 +16,7 @@ import {SchoolRollService} from "../providers/school-roll-service";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {InfoSearch} from "../pages/info-search/info-search";
 import {InfoDetail} from "../pages/info-detail/info-detail";
+import {Statistics} from "../pages/statistics/statistics";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {InfoDetail} from "../pages/info-detail/info-detail";
     Help,
     InfoSearch,
     InfoDetail,
+    Statistics,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import {InfoDetail} from "../pages/info-detail/info-detail";
     Help,
     InfoSearch,
     InfoDetail,
+    Statistics,
   ],
   providers: [
     StatusBar,
